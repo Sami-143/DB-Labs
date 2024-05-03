@@ -1,0 +1,10 @@
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\bin\Debug\Week2 Lab2 CRUD Operations SQL.exe.config
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\bin\Debug\Week2 Lab2 CRUD Operations SQL.exe
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\bin\Debug\Week2 Lab2 CRUD Operations SQL.pdb
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\obj\Debug\Week2 Lab2 CRUD Operations SQL.csproj.AssemblyReference.cache
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\obj\Debug\Week2_Lab2_CRUD_Operations_SQL.Form1.resources
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\obj\Debug\Week2_Lab2_CRUD_Operations_SQL.Properties.Resources.resources
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\obj\Debug\Week2 Lab2 CRUD Operations SQL.csproj.GenerateResource.cache
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\obj\Debug\Week2 Lab2 CRUD Operations SQL.csproj.CoreCompileInputs.cache
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\obj\Debug\Week2 Lab2 CRUD Operations SQL.exe
+C:\Users\AL-FATAH LAPTOP\OneDrive\Desktop\4th Semester\Week2 Lab2 CRUD Operations SQL\Week2 Lab2 CRUD Operations SQL\obj\Debug\Week2 Lab2 CRUD Operations SQL.pdb
