@@ -1,0 +1,55 @@
+Q1
+SELECT [ProductName] FROM [Northwind].[dbo].[Products] WHERE [UnitPrice] > (SELECT AVG([UnitPrice]) FROM [Northwind].[dbo].[Products])
+This task is solved with the help of the subquery syntax.
+***
+
+
+
+Q2
+SELECT [ShippedDate], COUNT(*) AS numberoforders FROM [Northwind].[dbo].[Orders] WHERE [ShippedDate] IS NOT NULL GROUP BY [ShippedDate] ORDER BY [ShippedDate] ASC 
+***
+
+
+
+Q3
+SELECT [Country] FROM [Northwind].[dbo].[Suppliers] GROUP BY [Country] HAVING COUNT(*) >= 2;
+***
+
+
+
+Q4
+SELECT MONTH([OrderDate]) AS Month_Number,COUNT(*) AS Orders_Delayed FROM [Northwind].[dbo].[Orders] WHERE [ShippedDate] > [RequiredDate] GROUP BY MONTH([OrderDate]) ORDER BY Month_Number;
+***
+
+
+
+Q5
+SELECT [OrderID], SUM([Discount]) AS [Discount] FROM [Northwind].[dbo].[Order Details] GROUP BY [OrderID] HAVING SUM([Discount]) > 0;
+***
+
+
+
+Q6
+SELECT ShipCity, COUNT(*) AS NumberOfOrders FROM [Northwind].[dbo].[Orders] WHERE ShipCountry = 'USA' AND YEAR(OrderDate) = 1997 GROUP BY ShipCity;
+***
+
+
+
+Q7
+SELECT [ShipCountry] AS Country,COUNT(*) AS Orders_Delayed FROM [Northwind].[dbo].[Orders] WHERE [ShippedDate] > [RequiredDate] GROUP BY [ShipCountry]
+***
+
+
+
+Q8
+SELECT [OrderID], SUM([Discount]) AS [Discount], SUM([UNITPRICE]) AS TotalPrice FROM [Northwind].[dbo].[Order Details] GROUP BY [OrderID] HAVING SUM([Discount]) > 0 AND SUM([UNITPRICE]) > 0;
+***
+
+
+
+Q9
+SELECT [ShipRegion], [ShipCity], COUNT(*) AS Numberoforders FROM [Northwind].[dbo].[Orders] WHERE YEAR(ShippedDate) = 1997 GROUP BY ShipRegion, ShipCity;
+***
+
+
+
