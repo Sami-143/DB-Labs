@@ -1,0 +1,70 @@
+--Q1
+SELECT C.CustomerID, O.OrderID, O.OrderDate FROM [Northwind].[dbo].[Customers] C LEFT JOIN [Northwind].[dbo].[Orders] O ON C.CustomerID = O.CustomerID;
+***
+
+
+
+--Q2
+SELECT C.CustomerID, O.OrderID, O.OrderDate FROM [Northwind].[dbo].[Customers] C LEFT JOIN [Northwind].[dbo].[Orders] O ON C.CustomerID = O.CustomerID WHERE O.OrderID IS NULL;
+***
+
+
+
+--Q3
+SELECT C.CustomerID, O.OrderID, O.OrderDate FROM [Northwind].[dbo].[Customers] C LEFT JOIN [Northwind].[dbo].[Orders] O ON C.CustomerID = O.CustomerID WHERE MONTH(OrderDate) ='7' AND YEAR(OrderDate) = '1997';
+***
+
+
+
+--Q4
+SELECT C.CustomerID, COUNT(O.OrderID) FROM [Northwind].[dbo].[Customers] C LEFT JOIN [Northwind].[dbo].[Orders] O ON C.CustomerID = O.CustomerID GROUP BY C.CustomerID;
+***
+
+
+
+--Q5
+SELECT E.[EmployeeID],E.[FirstName],E.[LastName] FROM [Northwind].[dbo].[Employees] AS E CROSS JOIN (VALUES(1),(2),(3),(4),(5)) AS NUMBERS(COPYNUMBER);
+***
+
+
+
+--Q6
+SELECT [EmployeeID], [HireDate] FROM [Northwind].[dbo].[Employees] WHERE [HireDate] >= '1996-04-07' AND [HireDate] <= '1997-04-08';
+***
+
+
+
+--Q7
+SELECT c.CustomerID, COUNT(o.OrderID) AS TotalOrders, SUM(od.Quantity) AS TotalQuantity FROM [Northwind].[dbo].[Customers] c JOIN [Northwind].[dbo].[Orders] o ON c.CustomerID = o.CustomerID JOIN [Northwind].[dbo].[Order Details] od ON o.OrderID = od.OrderID WHERE c.Country = 'USA' GROUP BY c.CustomerID;
+***
+
+
+
+--Q8
+SELECT c.CustomerID, c.CompanyName, o.OrderID, o.OrderDate FROM [Northwind].[dbo].[Customers] c LEFT JOIN [Northwind].[dbo].[Orders] o ON c.CustomerID = o.CustomerID WHERE o.OrderID IS NULL OR (o.OrderDate = '1997-07-04' AND o.OrderID IS NOT NULL);
+***
+
+
+
+--Q9
+SELECT e.EmployeeID AS EmployeeID, e.LastName AS EmployeeLastName, e.FirstName AS EmployeeFirstName, e.BirthDate AS EmployeeBirthDate, e.ReportsTo AS ManagerID, m.LastName AS ManagerLastName, m.FirstName AS ManagerFirstName, m.BirthDate AS ManagerBirthDate FROM [Northwind].[dbo].[Employees] e INNER JOIN [Northwind].[dbo].[Employees] m ON e.ReportsTo = m.EmployeeID WHERE e.BirthDate > m.BirthDate;
+***
+
+
+
+--Q10
+SELECT p.ProductName, o.OrderDate FROM [Northwind].[dbo].[Products] AS p JOIN [Northwind].[dbo].[Order Details]AS od ON p.ProductID = od.ProductID JOIN [Northwind].[dbo].[Orders] AS o ON od.OrderID = o.OrderID WHERE CONVERT(DATE, o.OrderDate) = '1997-08-08';
+***
+
+
+
+
+--Q11
+SELECT o.ShipAddress AS Address, o.ShipCity AS City, o.ShipCountry AS Country FROM [Northwind].[dbo].[Orders] AS o JOIN [Northwind].[dbo].[Shippers] AS sh ON o.ShipVia = sh.ShipperID WHERE sh.CompanyName = 'Anne' AND o.ShippedDate > o.RequiredDate;
+***
+
+
+
+--Q12
+SELECT DISTINCT o.ShipCountry AS Country FROM [Northwind].[dbo].[Orders] AS o JOIN [Northwind].[dbo].[Order Details] AS od ON o.OrderID = od.OrderID JOIN [Northwind].[dbo].Products AS p ON od.ProductID = p.ProductID JOIN [Northwind].[dbo].[Categories] AS c ON p.CategoryID = c.CategoryID WHERE c.CategoryName = 'Beverages';
+***
