@@ -1,0 +1,63 @@
+Q1
+SELECT DISTINCT AspNetUsers.Email, SpikoCourse.CourseTitle from SpikoStudent JOIN AspNetUsers on SpikoStudent.UserId = AspNetUsers.Id join SpikoStudentSection on SpikoStudentSection.StudentId = SpikoStudent.StudentId join SpikoSection on SpikoSection.Id = SpikoStudentSection.SectionId join SpikoCourse on SpikoCourse.CourseId = SpikoSection.CourseId JOIN SpikoAssignment on SpikoAssignment.SectionId = SpikoSection.Id JOIN SpikoAssignmentSubmission on SpikoAssignmentSubmission.AssignmentId = SpikoAssignment.Id where SpikoStudent.StudentId not in (SELECT SpikoAssignmentSubmission.StudentId from SpikoAssignmentSubmission)
+***
+
+
+
+Q2
+SELECT CONCAT(Session, ' ', Year) AS SemesterName FROM SpikoCourse ORDER BY DateCreated
+***
+
+
+
+Q3
+SELECT DISTINCT SpikoCourse.CourseTitle FROM SpikoCourse JOIN (SELECT DISTINCT SpikoSection.CourseId FROM SpikoSection JOIN SpikoAssignment ON SpikoAssignment.SectionId = SpikoSection.Id WHERE SpikoAssignment.OnlineSubmission = 1) AS OnlineSections ON OnlineSections.CourseId = SpikoCourse.CourseId
+***
+
+
+
+Q4
+SELECT s.FullName, se.ObtainedMarks FROM SpikoStudent s JOIN SpikoStudentEvaluation se ON s.StudentId = se.StudentId JOIN SpikoEvaluation e ON se.EvaluationId = e.Id WHERE e.CourseId = 1015;
+***
+
+
+
+Q5
+SELECT spC.CourseTitle FROM SpikoCourse spC WHERE spC.CourseId IN (SELECT sa.CourseId FROM SpikoAnnouncement sa GROUP BY sa.CourseId HAVING COUNT(sa.CourseId) > 5)
+***
+
+
+
+Q6
+SELECT ss.FullName FROM SpikoStudent AS ss WHERE ss.StudentId IN (SELECT sas.StudentId FROM SpikoAssignmentSubmission AS sas GROUP BY sas.StudentId HAVING COUNT(sas.StudentId) > 2)
+***
+
+
+
+Q7
+SELECT sc.CourseTitle FROM SpikoCourse AS sc WHERE sc.CourseId IN (SELECT ss.CourseId FROM SpikoSection AS ss JOIN (SELECT sss.SectionId FROM SpikoStudentSection AS sss GROUP BY sss.SectionId HAVING COUNT(*) > 50) AS sub ON ss.Id = sub.SectionId GROUP BY ss.CourseId HAVING COUNT(ss.CourseId) = 1)
+***
+
+
+
+Q8
+SELECT sas.AssignmentId FROM SpikoAssignmentSubmission AS sas JOIN SpikoAssignment AS sa ON sa.Id = sas.AssignmentId WHERE sa.Deadline > sas.SubmittedOn GROUP BY sas.AssignmentId HAVING COUNT(*) < 3 ORDER BY sas.AssignmentId
+***
+
+
+
+Q9
+SELECT DISTINCT C.CourseTitle FROM SpikoCourse C WHERE EXISTS (SELECT 1 FROM SpikoSection S INNER JOIN SpikoAssignment A ON S.Id = A.SectionId WHERE A.OnlineSubmission = 1 AND S.CourseId = C.CourseId)
+***
+
+
+
+Q10
+SELECT s1.FullName, s2.FullName FROM SpikoStudentSection AS sp1 JOIN SpikoStudentSection AS sp2 ON sp1.SectionId = sp2.SectionId AND sp1.StudentId != sp2.StudentId CROSS JOIN SpikoStudent AS s1 CROSS JOIN SpikoStudent AS s2 WHERE s1.StudentId = sp1.StudentId AND s2.StudentId = sp2.StudentId
+***
+
+
+
+Q11
+SELECT DISTINCT s1.RegistrationNumber AS RegistrationNumber1, s2.RegistrationNumber AS RegistrationNumber2 FROM dbo.SpikoAssignmentSubmission sa1 JOIN dbo.SpikoAssignmentSubmission sa2 ON sa1.AssignmentId = sa2.AssignmentId AND sa1.StudentId < sa2.StudentId JOIN dbo.SpikoStudent s1 ON sa1.StudentId = s1.StudentId JOIN dbo.SpikoStudent s2 ON sa2.StudentId = s2.StudentId WHERE ABS(DATEDIFF(HOUR, sa1.SubmittedOn, sa2.SubmittedOn)) <= 1 GROUP BY s1.RegistrationNumber, s2.RegistrationNumber, sa1.AssignmentId HAVING COUNT(*) > 2
+***
