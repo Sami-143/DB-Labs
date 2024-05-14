@@ -1,0 +1,13 @@
+Q1
+Select SUBSTRING(ProductName,1,1) AS FirstletterofProduct,SUM(ProductID) As totalProducts From Products Group By ProductName,ProductID Order BY ProductName
+***
+
+
+Q2
+SELECT MONTH(OrderDate) AS MonthName, Customers.CustomerID,SUM(ORD.Quantity * ORD.UnitPrice) AS TotalSpending FROM Orders JOIN Customers ON Orders.CustomerID = Customers.CustomerID JOIN Northwind.dbo.[Order Details] As ORD ON Orders.OrderID = ORD.OrderID WHERE YEAR(OrderDate) = 1997 GROUP BY YEAR(OrderDate),MONTH(OrderDate),Customers.CustomerID ORDER BY MonthName
+***
+
+
+Q3
+
+***
