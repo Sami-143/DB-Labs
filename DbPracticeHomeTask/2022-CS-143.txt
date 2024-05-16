@@ -1,0 +1,314 @@
+Q1
+SELECT CONCAT(last_name,', ',job_id) AS Employee_and_Title FROM DBPracticeHomeTasks.dbo.employees; 
+***
+
+
+
+Q2
+SELECT last_name,salary FROM DBPracticeHomeTasks.dbo.employees WHERE salary > 12000;
+***
+
+
+
+Q3
+SELECT last_name, salary FROM DBPracticeHomeTasks.dbo.employees WHERE salary < 5000 OR salary > 12000;
+***
+
+
+
+Q4
+SELECT last_name,hire_date FROM DBPracticeHomeTasks.dbo.employees WHERE Year(hire_date)='1994';
+***
+
+
+
+Q5
+can't solve because there is no table of salary anywhere or commission table in the schema
+***
+
+
+
+Q6
+SELECT last_name
+FROM DBPracticeHomeTasks.dbo.employees
+WHERE SUBSTRING(last_name, 3, 1) = 'a';
+***
+
+
+
+Q7
+SELECT last_name
+FROM DBPracticeHomeTasks.[dbo].[employees]
+WHERE last_name LIKE '%a%' AND last_name LIKE '%e%';
+***
+
+
+
+Q8
+SELECT e.last_name, e.job_id, e.salary
+FROM [DBPracticeHomeTasks].[dbo].[employees] e
+JOIN [DBPracticeHomeTasks].[dbo].[jobs] j ON e.job_id = j.job_id
+WHERE (j.job_title = 'Sales Representative' OR j.job_title = 'Stock Clerk')
+  AND e.salary NOT IN (2500, 3500, 7000);
+***
+
+
+
+Q9
+SELECT 
+    [employee_id],
+    [last_name],
+    [salary],
+    CAST(ROUND([salary] * 1.155, 0) AS INT) AS new_salary
+FROM [DBPracticeHomeTasks].[dbo].[employees];
+***
+
+
+Q10
+SELECT 
+    UPPER(LEFT(last_name, 1)) + LOWER(SUBSTRING(last_name, 2, LEN(last_name))) AS EmployeeName,
+    LEN(last_name) AS LastNameLength
+FROM [DBPracticeHomeTasks].[dbo].[employees]
+WHERE last_name LIKE 'J%' OR last_name LIKE 'A%' OR last_name LIKE 'M%'
+ORDER BY last_name
+***
+
+
+
+Q11
+SELECT 
+    e.last_name,
+    CEILING(DATEDIFF(day, e.hire_date, GETDATE()) / 30.0) AS MONTHS_WORKED
+FROM 
+    DBPracticeHomeTasks.[dbo].[employees] e
+ORDER BY 
+    MONTHS_WORKED
+***
+
+
+
+Q12
+SELECT 
+    last_name + ' earns ' + CAST(salary AS VARCHAR) + ' monthly but wants ' + CAST(salary * 3 AS VARCHAR) + ' as Dream Salaries' AS Dream_Salaries
+FROM 
+    DBPracticeHomeTasks.[dbo].[employees];
+***
+
+
+
+Q13
+SELECT 
+    [last_name],
+    '$' + RIGHT('000000000000000' + CAST([salary] AS VARCHAR(15)), 15) AS SALARY
+FROM [DBPracticeHomeTasks].[dbo].[employees];
+***
+
+
+
+Q14
+SELECT 
+    [last_name],
+    [hire_date],
+    FORMAT(DATEADD(MONTH, 6, [hire_date]), 'dddd, the d"th of" MMMM, yyyy') AS REVIEW
+FROM [DBPracticeHomeTasks].[dbo].[employees]
+***
+
+
+
+Q15
+SELECT 
+    [last_name],
+    [hire_date],
+    DATENAME(WEEKDAY, [hire_date]) AS DAY
+FROM [DBPracticeHomeTasks].[dbo].[employees]
+ORDER BY 
+    CASE 
+        WHEN DATENAME(WEEKDAY, [hire_date]) = 'Monday' THEN 1
+        WHEN DATENAME(WEEKDAY, [hire_date]) = 'Tuesday' THEN 2
+        WHEN DATENAME(WEEKDAY, [hire_date]) = 'Wednesday' THEN 3
+        WHEN DATENAME(WEEKDAY, [hire_date]) = 'Thursday' THEN 4
+        WHEN DATENAME(WEEKDAY, [hire_date]) = 'Friday' THEN 5
+        WHEN DATENAME(WEEKDAY, [hire_date]) = 'Saturday' THEN 6
+        ELSE 7
+    END;
+***
+
+
+
+Q16
+there is no commission table
+***
+
+
+
+Q17
+SELECT 
+    LEFT([last_name], 8) AS EMPLOYEES_AND_THEIR_SALARIES,
+    REPLICATE('*', [salary] / 1000) AS Salary_Amount
+FROM [DBPracticeHomeTasks].[dbo].[employees]
+ORDER BY [salary] DESC;
+***
+
+
+
+Q18
+couldn't do;
+***
+
+
+
+Q19
+couldn't do;
+***
+
+
+
+Q20
+SELECT
+    MAX([salary]) AS Maximum,
+    MIN([salary]) AS Minimum,
+    SUM([salary]) AS Sum,
+    AVG([salary]) AS Average
+FROM [DBPracticeHomeTasks].[dbo].[employees]
+***
+
+
+
+Q21
+SELECT 
+    [job_id],
+    MAX([salary]) AS Maximum,
+    MIN([salary]) AS Minimum,
+    SUM([salary]) AS Sum,
+    AVG([salary]) AS Average
+FROM 
+    [DBPracticeHomeTasks].[dbo].[employees]
+GROUP BY 
+    [job_id];
+***
+
+
+
+Q22
+SELECT
+    [job_id],
+    COUNT(*) AS Number_of_People
+FROM [DBPracticeHomeTasks].[dbo].[employees]
+GROUP BY [job_id]
+***
+
+
+
+Q23
+SELECT
+    COUNT(*) AS Total_Employees,
+    SUM(CASE WHEN YEAR([hire_date]) = 1995 THEN 1 ELSE 0 END) AS Hired_in_1995,
+    SUM(CASE WHEN YEAR([hire_date]) = 1996 THEN 1 ELSE 0 END) AS Hired_in_1996,
+    SUM(CASE WHEN YEAR([hire_date]) = 1997 THEN 1 ELSE 0 END) AS Hired_in_1997,
+    SUM(CASE WHEN YEAR([hire_date]) = 1998 THEN 1 ELSE 0 END) AS Hired_in_1998
+FROM 
+    [DBPracticeHomeTasks].[dbo].[employees];
+***
+
+
+
+Q24
+SELECT 
+    [manager_id],
+    MIN(e.[salary]) AS Lowest_Salary
+FROM 
+    [DBPracticeHomeTasks].[dbo].[employees] e
+WHERE 
+    e.[manager_id] IS NOT NULL
+GROUP BY 
+    [manager_id]
+HAVING 
+    MIN(e.[salary]) > 6000
+ORDER BY 
+    Lowest_Salary DESC;
+***
+
+
+
+Q25
+SELECT 
+    L.location_id,
+    L.street_address,
+    L.city,
+    L.state_province,
+    C.country_name
+FROM 
+    [DBPracticeHomeTasks].[dbo].LOCATIONS L
+JOIN 
+    [DBPracticeHomeTasks].[dbo].COUNTRIES C ON L.country_id = C.country_id;
+***
+
+
+
+Q26
+SELECT 
+    e.last_name,
+    d.department_id,
+    d.department_name
+FROM 
+    [DBPracticeHomeTasks].[dbo].EMPLOYEES e
+JOIN 
+    [DBPracticeHomeTasks].[dbo].departments d ON e.department_id = d.department_id;
+***
+
+
+
+Q27
+SELECT 
+    e.last_name,
+    e.job_id,
+    e.department_id,
+    d.department_name
+FROM 
+    [DBPracticeHomeTasks].[dbo].employees e
+JOIN 
+    [DBPracticeHomeTasks].[dbo].DEPARTMENTS d ON e.department_id = d.department_id
+JOIN 
+    [DBPracticeHomeTasks].[dbo].LOCATIONS l ON d.location_id = l.location_id
+WHERE 
+    l.city = 'Toronto';
+***
+
+
+
+Q28
+SELECT 
+    e.last_name AS Employee_Last_Name,
+    e.employee_id AS Employee_Number,
+    m.last_name AS Manager_Last_Name,
+    e.manager_id AS Manager_Number
+FROM 
+    DBPracticeHomeTasks.[dbo].employees e
+LEFT JOIN 
+    DBPracticeHomeTasks.[dbo].employees m ON e.manager_id = m.employee_id
+WHERE e.manager_id IS NOT NULL
+***
+
+
+
+Q29
+SELECT 
+    e.last_name AS Employee_Last_Name,
+    e.employee_id AS Employee_Number,
+    m.last_name AS Manager_Last_Name,
+    e.manager_id AS Manager_Number
+FROM 
+    DBPracticeHomeTasks.[dbo].employees e
+LEFT JOIN 
+    DBPracticeHomeTasks.[dbo].employees m ON e.manager_id = m.employee_id
+***
+
+
+
+Q30
+SELECT e.last_name AS Last_name,
+    e.job_id,
+    d.department_name,
+    e.salary 
+FROM employees e 
+JOIN departments d ON e.department_id = d.department_id;
