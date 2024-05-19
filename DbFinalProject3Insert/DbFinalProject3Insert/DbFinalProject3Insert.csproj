@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F1C6EDB-809F-49ED-8208-6E7A9A9F980F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DbFinalProject3Insert</RootNamespace>
+    <AssemblyName>DbFinalProject3Insert</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="DatabaseValues.cs" />
+    <Compile Include="FB_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FB_User.Designer.cs">
+      <DependentUpon>FB_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FB_Interactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FB_Interactions.Designer.cs">
+      <DependentUpon>FB_Interactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FB_Page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FB_Page.Designer.cs">
+      <DependentUpon>FB_Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reddit_Interaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reddit_Interaction.Designer.cs">
+      <DependentUpon>Reddit_Interaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reddit_Post.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reddit_Post.Designer.cs">
+      <DependentUpon>Reddit_Post.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subreddit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subreddit.Designer.cs">
+      <DependentUpon>Subreddit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Social_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Social_User.Designer.cs">
+      <DependentUpon>Social_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FB_Post.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FB_Post.Designer.cs">
+      <DependentUpon>FB_Post.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FB_User.resx">
+      <DependentUpon>FB_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FB_Interactions.resx">
+      <DependentUpon>FB_Interactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FB_Page.resx">
+      <DependentUpon>FB_Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reddit_Interaction.resx">
+      <DependentUpon>Reddit_Interaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reddit_Post.resx">
+      <DependentUpon>Reddit_Post.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subreddit.resx">
+      <DependentUpon>Subreddit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Social_User.resx">
+      <DependentUpon>Social_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FB_Post.resx">
+      <DependentUpon>FB_Post.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
